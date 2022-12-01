@@ -12,6 +12,8 @@ namespace ITeasy_UniversityManagementDemo.Test
     {
         [Fact]
 
+        //public void CreateStudent_ConstructInCampusStudent_InitialTuitionFeeMustBeLargerthanOrEqualTo2500()
+        //public void CreateStudent_ConstructInCampusStudent_InitialTuitionFeeMustBeSmallerThanOrEqualTo3500()
         public void CreateStudent_ConstructInCampusStudent_InitialTuitionFeeMustBe2500()
         {
             // Arrange
@@ -22,7 +24,20 @@ namespace ITeasy_UniversityManagementDemo.Test
                 .CreateStudent("Reza", "Ahmadi");
 
             //Assert
-            Assert.Equal(6700, Student.InitialTuitionFee);
+            //Assert.Equal(6700, Student.InitialTuitionFee);
+
+            Assert.True(Student.InitialTuitionFee >= 2500);
+
+            //Assert.True(Student.InitialTuitionFee <= 3500);
+
+            //Assert.True(Student.InitialTuitionFee >= 2500 && Student.InitialTuitionFee <= 3500);
+
+            //Assert.True(Student.InitialTuitionFee >= 2500);
+            //Assert.True(Student.InitialTuitionFee <= 3500);
+
+            //// ** Warning ** Do not be an Idiot !
+            //Assert.True(Student.SuggestedUnits >80);
+
         }
     }
 }

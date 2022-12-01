@@ -19,7 +19,7 @@ namespace ITeasy_UniversityManagementDemo.Test
             var lesson = new Lesson("C#.NET 11 - Advanced");
 
             // Assert
-            Assert.False(lesson.IsNew);
+            Assert.True(lesson.IsNew);
         }
     }
 }

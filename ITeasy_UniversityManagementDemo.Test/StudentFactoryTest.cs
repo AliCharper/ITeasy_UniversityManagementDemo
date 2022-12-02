@@ -105,7 +105,6 @@ namespace ITeasy_UniversityManagementDemo.Test
             // Assert
            //Assert.Equal(2500, student.InitialTuitionFee);
            Assert.Equal(2500, student.InitialTuitionFee, 0);
-
         }
 
     }

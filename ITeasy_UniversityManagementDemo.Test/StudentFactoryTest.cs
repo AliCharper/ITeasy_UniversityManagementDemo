@@ -24,14 +24,11 @@ namespace ITeasy_UniversityManagementDemo.Test
                 .CreateStudent("Reza", "Ahmadi");
 
             //Assert
-            //Assert.Equal(6700, Student.InitialTuitionFee);
+            Assert.Equal(2500, Student.InitialTuitionFee);
 
-            Assert.True(Student.InitialTuitionFee >= 2500);
-
+            //Assert.True(Student.InitialTuitionFee >= 2500);
             //Assert.True(Student.InitialTuitionFee <= 3500);
-
             //Assert.True(Student.InitialTuitionFee >= 2500 && Student.InitialTuitionFee <= 3500);
-
             //Assert.True(Student.InitialTuitionFee >= 2500);
             //Assert.True(Student.InitialTuitionFee <= 3500);
 
@@ -39,5 +36,25 @@ namespace ITeasy_UniversityManagementDemo.Test
             //Assert.True(Student.SuggestedUnits >80);
 
         }
+
+        [Fact]
+        public void CreateStudent_ConstructInternalStudent_InitialTuitionFeeMustBeBetween2500And3500()
+        {
+
+            // Arrange
+            var _studentFactory = new StudentFactory();
+
+            // Act
+            var student = (InCampusStudent)_studentFactory
+                .CreateStudent("Kamran", "Kamali");
+
+            // Assert
+            //Assert.True(student.InitialTuitionFee >= 3000 && student.InitialTuitionFee <= 3500);
+            Assert.True(student.InitialTuitionFee >= 3000 && student.InitialTuitionFee <= 3500,
+                "InitialTuitionFee in not in the Range");
+
+        }
+
+
     }
 }

@@ -89,7 +89,29 @@ namespace ITeasy_UniversityManagementDemo.Test
             Assert.InRange(student.InitialTuitionFee, 2500, 3500);
         }
 
+
+        [Fact]
+        public void CreateStudent_ConstructInternalStudent_InitialTuitionFeeMustBe2500_PrecisionExample()
+        {
+            // Arrange
+            var _studentFactory = new StudentFactory();
+
+            // Act
+            var student = (InCampusStudent)_studentFactory
+                .CreateStudent("Ali", "Hamidi");
+
+            student.InitialTuitionFee = 2500.123m;
+
+            // Assert
+           //Assert.Equal(2500, student.InitialTuitionFee);
+           Assert.Equal(2500, student.InitialTuitionFee, 0);
+
+        }
+
     }
 
+
+
+
 }
-}
+

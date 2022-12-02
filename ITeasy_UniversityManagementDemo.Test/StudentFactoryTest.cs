@@ -55,6 +55,41 @@ namespace ITeasy_UniversityManagementDemo.Test
 
         }
 
+        [Fact]
+
+        public void CreateStudent_ConstructInternalStudent_InitialTuitionFeeMustBeBetween2500And3500_Alternative()
+        {
+
+            // Arrange
+            var _studentFactory = new StudentFactory();
+
+
+            // Act
+            var student = (InCampusStudent)_studentFactory
+                .CreateStudent("Kamran", "Kamali");
+
+            // Assert
+            Assert.True(student.InitialTuitionFee >= 2500);
+            Assert.True(student.InitialTuitionFee <= 3500);
+        }
+
+        [Fact]
+        public void CreateStudent_ConstructInternalStudent_InitialTuitionFeeMustBeBetween2500And3500_AlternativeWithInRange()
+        {
+
+            // Arrange
+            var _studentFactory = new StudentFactory();
+
+
+            // Act
+            var student = (InCampusStudent)_studentFactory
+                .CreateStudent("Kamran", "Kamali");
+
+            // Assert
+            Assert.InRange(student.InitialTuitionFee, 2500, 3500);
+        }
 
     }
+
+}
 }

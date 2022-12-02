@@ -142,5 +142,29 @@ namespace ITeasy_UniversityManagementDemo.Test
             Assert.All(inCampusStudent.AttendedLessons,
                 lesson => Assert.False(lesson.IsNew));
         }
+
+        [Fact]
+        public async Task CreateInCampusStudent_InCampusStudentCreated_AttendedLessonsMustMatchObligatoryLessonsAsync()
+        {
+            // Arrange           
+            var universityManagementRepositoryTestDataRepository =
+              new UniversityManagementTestDataRepository();
+            var studentService = new StudentService(
+                universityManagementRepositoryTestDataRepository,
+                new StudentFactory());
+
+            var obligatoryLessons = await universityManagementRepositoryTestDataRepository
+               .GetLessonsAsync(
+                   Guid.Parse("37e03ca7-c730-4351-834c-b66f280cdb01"),
+                   Guid.Parse("1fd115cf-f44c-4982-86bc-a8fe2e4ff83e"));
+
+
+            // Act
+            var inCampusStudent = await studentService
+                .CreateInCampusStudentAsync("Pejman", "Vaziri");
+
+            // Assert
+            Assert.Equal(obligatoryLessons, inCampusStudent.AttendedLessons);
+        }
     }
 }

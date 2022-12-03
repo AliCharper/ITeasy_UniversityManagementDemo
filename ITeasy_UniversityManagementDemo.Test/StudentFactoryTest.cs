@@ -107,6 +107,23 @@ namespace ITeasy_UniversityManagementDemo.Test
            Assert.Equal(2500, student.InitialTuitionFee, 0);
         }
 
+        [Fact]
+        public void CreateStudent_IsExternalIsTrue_ReturnTypeMustBeExternalStudent()
+        {
+            // Arrange 
+            var factory = new StudentFactory();
+
+            // Act
+            var student = factory
+                .CreateStudent("Eynolah", "Bagherzadeh", "Najaf Abad", true);
+
+            // Assert
+            Assert.IsType<ExternalStudent>(student);
+            //Assert.IsAssignableFrom<Student>(student);
+
+        }
+
+
     }
 
 

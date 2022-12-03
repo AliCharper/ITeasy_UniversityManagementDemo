@@ -231,5 +231,25 @@ namespace ITeasy_UniversityManagementDemo.Test
                () => studentService.NotifyOfGraduation(inCampusStudent));
         }
 
+        //[Fact]
+        //public void CalculateStudyYears_Test()
+        //{
+        //    // Arrange 
+        //    var studentService = new StudentService(
+        //        new UniversityManagementTestDataRepository(),
+        //        new StudentFactory());
+
+        //    var inCampusStudent = new InCampusStudent(
+        //          "Hasan", "Ahmadi", 5, 3000, false, 3);
+
+        //    int studyyears = studentService.CalculateStudyYears(inCampusStudent);
+
+        //    // Act & Assert
+        //    Assert.Equal(200, studyyears);
+
+        //}
+
+
+
     }
 }

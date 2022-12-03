@@ -6,8 +6,12 @@ using Infra.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+
+
+//[assembly: InternalsVisibleTo("ITeasy_UniversityManagementDemo.Test")]
 
 namespace Business
 {
@@ -175,6 +179,7 @@ namespace Business
             }
         }
 
+        //internal int CalculateStudyYears(InCampusStudent stdent)
         private int CalculateStudyYears(InCampusStudent stdent)
         {
             if (stdent.SuggestedUnits < 50)

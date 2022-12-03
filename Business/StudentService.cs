@@ -149,21 +149,20 @@ namespace Business
 
         public async Task GiveLevelRaiseAsync(InCampusStudent student, int raise)
         {
-            if (raise < 100)
+            if (raise > 10)
             {
                 throw new StudentInvalidlevelRaiseException(
-                    "Invalid raise: raise must be higher than or equal to 100.", raise);
-
+                    "Invalid Levelraise: raise shoult Not be higher than 10.", raise);
             }
 
 
-            if (student.MinimumScholarShipGiven && raise == 100)
+            if (student.MinimumScholarShipGiven && raise == 2)
             {
                 throw new StudentInvalidlevelRaiseException(
-                    "Invalid raise: minimum raise cannot be given twice.", raise);
+                    "Invalid Levelraise: minimum Levelraise cannot be given twice.", raise);
             }
 
-            if (raise == 100)
+            if (raise == 5)
             {
                 await GiveMinimumScholarShipGivenAsync(student);
             }

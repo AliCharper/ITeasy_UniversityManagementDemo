@@ -1,5 +1,7 @@
 ﻿using Business;
 using DataAccess.Factory;
+using Domain.Entities;
+using Infra.Exceptions;
 using ITeasy_UniversityManagementDemo.Test.Services;
 using System;
 using System.Collections.Generic;
@@ -144,8 +146,7 @@ namespace ITeasy_UniversityManagementDemo.Test
         }
 
         [Fact]
-        public async Task CreateInCampusStudent_InCampusStudentCreated_AttendedLessonsMustMatchObligatoryLessonsAsync()
-        {
+        public async Task CreateInCampusStudent_InCampusStudentCreated_AttendedLessonsMustMatchObligatoryLessonsAsync()        {
             // Arrange           
             var universityManagementRepositoryTestDataRepository =
               new UniversityManagementTestDataRepository();
@@ -166,5 +167,49 @@ namespace ITeasy_UniversityManagementDemo.Test
             // Assert
             Assert.Equal(obligatoryLessons, inCampusStudent.AttendedLessons);
         }
+
+
+        [Fact]
+        public async Task GivelevelRaise_LevelRaiseAboveMaximumGiven_InCampusStudentInvalidRaiseExceptionMustBeThrown()
+        {
+            // Arrange           
+            var universityManagementRepositoryTestDataRepository =
+              new UniversityManagementTestDataRepository();
+            var studentService = new StudentService(
+                universityManagementRepositoryTestDataRepository,
+                new StudentFactory());
+
+            var inCampusStudent = new InCampusStudent(
+                "Hasan", "Ahmadi", 5, 3000, false, 3);
+
+            // Act & Assert
+            await Assert.ThrowsAsync<StudentInvalidlevelRaiseException>(
+                async () =>
+                await studentService.GiveLevelRaiseAsync(inCampusStudent, 30)
+                );
+
+        }
+
+
+        [Fact]
+        public void GivelevelRaise_LevelRaiseAboveMaximumGiven_InCampusStudentInvalidRaiseExceptionMustBeThrown_Bad()
+        {
+            // Arrange           
+            var universityManagementRepositoryTestDataRepository =
+              new UniversityManagementTestDataRepository();
+            var studentService = new StudentService(
+                universityManagementRepositoryTestDataRepository,
+                new StudentFactory());
+
+            var inCampusStudent = new InCampusStudent(
+                "Hasan", "Ahmadi", 5, 3000, false, 3);
+
+            // Act & Assert
+             Assert.ThrowsAsync<StudentInvalidlevelRaiseException>(
+                async () =>
+                await studentService.GiveLevelRaiseAsync(inCampusStudent, 30)
+                );
+        }
+
     }
 }

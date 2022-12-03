@@ -1,4 +1,5 @@
 ﻿using Business;
+using DataAccess.Events;
 using DataAccess.Factory;
 using Domain.Entities;
 using Infra.Exceptions;
@@ -210,6 +211,25 @@ namespace ITeasy_UniversityManagementDemo.Test
         //        await studentService.GiveLevelRaiseAsync(inCampusStudent, 30)
         //        );
         //}
+
+
+        [Fact]
+        public void NotifyOfGraduation_StudentIsAGraduated_OnStudentIsGradatedMustBeTriggered()
+        {
+            // Arrange 
+            var studentService = new StudentService(
+                new UniversityManagementTestDataRepository(),
+                new StudentFactory());
+
+            var inCampusStudent = new InCampusStudent(
+                  "Hasan", "Ahmadi", 5, 3000, false, 3);
+
+            // Act & Assert
+            Assert.Raises<StudentIsGraduatedEventArgs>(
+               handler => studentService.StudentIsGraduated += handler,
+               handler => studentService.StudentIsGraduated -= handler,
+               () => studentService.NotifyOfGraduation(inCampusStudent));
+        }
 
     }
 }

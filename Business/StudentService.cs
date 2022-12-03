@@ -1,4 +1,5 @@
-﻿using DataAccess.Factory;
+﻿using DataAccess.Events;
+using DataAccess.Factory;
 using DataAccess.Repository;
 using Domain.Entities;
 using Infra.Exceptions;
@@ -19,7 +20,7 @@ namespace Business
         private readonly IUniversityManagementRepository _repository;
         private readonly StudentFactory _studentFactory;
 
-
+        public event EventHandler<StudentIsGraduatedEventArgs>? StudentIsGraduated;
 
         public StudentService(IUniversityManagementRepository repository,
             StudentFactory studentFactory)
@@ -187,10 +188,17 @@ namespace Business
             }
         }
 
-        public void NotifyOfAbsence(Student student)
+        public void NotifyOfGraduation(Student student)
         {
-            throw new NotImplementedException();
+            OnStudentGraduation(new StudentIsGraduatedEventArgs(student.Id));
         }
+
+        protected virtual void OnStudentGraduation(
+            StudentIsGraduatedEventArgs eventArgs)
+        {
+            StudentIsGraduated?.Invoke(this, eventArgs);
+        }
+
 
     }
 }

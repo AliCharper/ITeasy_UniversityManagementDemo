@@ -31,6 +31,6 @@ namespace Business
         Task GiveMinimumScholarShipGivenAsync(InCampusStudent student);
 
         Task GiveLevelRaiseAsync(InCampusStudent student, int raise);
-        void NotifyOfAbsence(Student student);
+        void NotifyOfGraduation(Student student);
     }
 }

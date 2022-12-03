@@ -191,25 +191,25 @@ namespace ITeasy_UniversityManagementDemo.Test
         }
 
 
-        [Fact]
-        public void GivelevelRaise_LevelRaiseAboveMaximumGiven_InCampusStudentInvalidRaiseExceptionMustBeThrown_Bad()
-        {
-            // Arrange           
-            var universityManagementRepositoryTestDataRepository =
-              new UniversityManagementTestDataRepository();
-            var studentService = new StudentService(
-                universityManagementRepositoryTestDataRepository,
-                new StudentFactory());
+        //[Fact]
+        //public void GivelevelRaise_LevelRaiseAboveMaximumGiven_InCampusStudentInvalidRaiseExceptionMustBeThrown_Bad()
+        //{
+        //    // Arrange           
+        //    var universityManagementRepositoryTestDataRepository =
+        //      new UniversityManagementTestDataRepository();
+        //    var studentService = new StudentService(
+        //        universityManagementRepositoryTestDataRepository,
+        //        new StudentFactory());
 
-            var inCampusStudent = new InCampusStudent(
-                "Hasan", "Ahmadi", 5, 3000, false, 3);
+        //    var inCampusStudent = new InCampusStudent(
+        //        "Hasan", "Ahmadi", 5, 3000, false, 3);
 
-            // Act & Assert
-             Assert.ThrowsAsync<StudentInvalidlevelRaiseException>(
-                async () =>
-                await studentService.GiveLevelRaiseAsync(inCampusStudent, 30)
-                );
-        }
+        //    // Act & Assert
+        //     Assert.ThrowsAsync<StudentInvalidlevelRaiseException>(
+        //        async () =>
+        //        await studentService.GiveLevelRaiseAsync(inCampusStudent, 30)
+        //        );
+        //}
 
     }
 }

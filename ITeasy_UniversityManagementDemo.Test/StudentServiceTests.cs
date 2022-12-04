@@ -3,6 +3,7 @@ using DataAccess.Events;
 using DataAccess.Factory;
 using Domain.Entities;
 using Infra.Exceptions;
+using ITeasy_UniversityManagementDemo.Test.Fixtures;
 using ITeasy_UniversityManagementDemo.Test.Services;
 using System;
 using System.Collections.Generic;
@@ -12,24 +13,27 @@ using System.Threading.Tasks;
 
 namespace ITeasy_UniversityManagementDemo.Test
 {
-    public class StudentServiceTests
+    public class StudentServiceTests : IClassFixture<StudentServiceFixture>
     {
+
+        private readonly StudentServiceFixture _studentServiceFixture;
+
+        public StudentServiceTests(StudentServiceFixture studentServiceFixture)
+        {
+            _studentServiceFixture = studentServiceFixture;
+        }
+
+
+
         [Fact]
         public void CreateInCampusStudent_InCampusStudentCreated_MustHaveAttendedFirstObligatoryLesson()
         {
-            // Arrange           
-            var universityManagementRepositoryTestDataRepository =
-              new UniversityManagementTestDataRepository();
-
-            var studentService = new StudentService(
-                universityManagementRepositoryTestDataRepository,
-                new StudentFactory());
-
-            var obligatoryLesson = universityManagementRepositoryTestDataRepository
+           
+            var obligatoryLesson = _studentServiceFixture.universityManagementRepositoryTestDataRepository
                 .GetLesson(Guid.Parse("37e03ca7-c730-4351-834c-b66f280cdb01"));
 
             // Act
-            var inCampusStudent = studentService
+            var inCampusStudent = _studentServiceFixture.StudentService
                 .CreateInCampusStudent("Pejman", "Vaziri");
 
             // Assert

@@ -11,8 +11,6 @@ namespace ITeasy_UniversityManagementDemo.Test
     public class StudentFactoryTest : IDisposable
     {
         private StudentFactory _studentFactory;
-
-
         public StudentFactoryTest()
         {
             _studentFactory = new StudentFactory();
@@ -67,10 +65,6 @@ namespace ITeasy_UniversityManagementDemo.Test
 
         public void CreateStudent_ConstructInternalStudent_InitialTuitionFeeMustBeBetween2500And3500_Alternative()
         {
-
-            // Arrange
-            var _studentFactory = new StudentFactory();
-
 
             // Act
             var student = (InCampusStudent)_studentFactory

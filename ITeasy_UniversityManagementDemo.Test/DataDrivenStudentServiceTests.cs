@@ -14,12 +14,12 @@ using System.Threading.Tasks;
 namespace ITeasy_UniversityManagementDemo.Test
 {
     [Collection("StudentServiceCollection")]
-    public class StudentServiceTests //: IClassFixture<StudentServiceFixture>
+    public class DataDrivenStudentServiceTests //: IClassFixture<StudentServiceFixture>
     {
 
         private readonly StudentServiceFixture _studentServiceFixture;
 
-        public StudentServiceTests(StudentServiceFixture studentServiceFixture)
+        public DataDrivenStudentServiceTests(StudentServiceFixture studentServiceFixture)
         {
             _studentServiceFixture = studentServiceFixture;
         }

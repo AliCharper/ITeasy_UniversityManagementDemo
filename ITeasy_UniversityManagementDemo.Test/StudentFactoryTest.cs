@@ -22,7 +22,7 @@ namespace ITeasy_UniversityManagementDemo.Test
         }
 
         [Fact]
-
+        [Trait("Category", "StudentFactory_CreateStudent_InitialTuitionFee")]
         //public void CreateStudent_ConstructInCampusStudent_InitialTuitionFeeMustBeLargerthanOrEqualTo2500()
         //public void CreateStudent_ConstructInCampusStudent_InitialTuitionFeeMustBeSmallerThanOrEqualTo3500()
         public void CreateStudent_ConstructInCampusStudent_InitialTuitionFeeMustBe2500()
@@ -47,6 +47,7 @@ namespace ITeasy_UniversityManagementDemo.Test
         }
 
         [Fact]
+        [Trait("Category", "StudentFactory_CreateStudent_InitialTuitionFee")]
         public void CreateStudent_ConstructInternalStudent_InitialTuitionFeeMustBeBetween2500And3500()
         {
 
@@ -62,7 +63,7 @@ namespace ITeasy_UniversityManagementDemo.Test
         }
 
         [Fact]
-
+        [Trait("Category", "StudentFactory_CreateStudent_InitialTuitionFee")]
         public void CreateStudent_ConstructInternalStudent_InitialTuitionFeeMustBeBetween2500And3500_Alternative()
         {
 
@@ -76,6 +77,7 @@ namespace ITeasy_UniversityManagementDemo.Test
         }
 
         [Fact]
+        [Trait("Category", "StudentFactory_CreateStudent_InitialTuitionFee")]
         public void CreateStudent_ConstructInternalStudent_InitialTuitionFeeMustBeBetween2500And3500_AlternativeWithInRange()
         {
 
@@ -89,6 +91,7 @@ namespace ITeasy_UniversityManagementDemo.Test
 
 
         [Fact]
+        [Trait("Category", "StudentFactory_CreateStudent_InitialTuitionFee")]
         public void CreateStudent_ConstructInternalStudent_InitialTuitionFeeMustBe2500_PrecisionExample()
         {
 
@@ -104,6 +107,7 @@ namespace ITeasy_UniversityManagementDemo.Test
         }
 
         [Fact]
+        [Trait("Category", "StudentFactory_CreateStudent_ReturnType")]
         public void CreateStudent_IsExternalIsTrue_ReturnTypeMustBeExternalStudent()
         {
             

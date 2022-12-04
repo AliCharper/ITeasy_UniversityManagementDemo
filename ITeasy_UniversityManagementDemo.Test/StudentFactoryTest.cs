@@ -8,16 +8,27 @@ using System.Threading.Tasks;
 
 namespace ITeasy_UniversityManagementDemo.Test
 {
-    public class StudentFactoryTest
+    public class StudentFactoryTest : IDisposable
     {
+        private StudentFactory _studentFactory;
+
+
+        public StudentFactoryTest()
+        {
+            _studentFactory = new StudentFactory();
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
+
         [Fact]
 
         //public void CreateStudent_ConstructInCampusStudent_InitialTuitionFeeMustBeLargerthanOrEqualTo2500()
         //public void CreateStudent_ConstructInCampusStudent_InitialTuitionFeeMustBeSmallerThanOrEqualTo3500()
         public void CreateStudent_ConstructInCampusStudent_InitialTuitionFeeMustBe2500()
         {
-            // Arrange
-            var _studentFactory = new StudentFactory();
 
             // Act 
             var Student = (InCampusStudent)_studentFactory
@@ -40,9 +51,6 @@ namespace ITeasy_UniversityManagementDemo.Test
         [Fact]
         public void CreateStudent_ConstructInternalStudent_InitialTuitionFeeMustBeBetween2500And3500()
         {
-
-            // Arrange
-            var _studentFactory = new StudentFactory();
 
             // Act
             var student = (InCampusStudent)_studentFactory
@@ -77,10 +85,6 @@ namespace ITeasy_UniversityManagementDemo.Test
         public void CreateStudent_ConstructInternalStudent_InitialTuitionFeeMustBeBetween2500And3500_AlternativeWithInRange()
         {
 
-            // Arrange
-            var _studentFactory = new StudentFactory();
-
-
             // Act
             var student = (InCampusStudent)_studentFactory
                 .CreateStudent("Kamran", "Kamali");
@@ -93,8 +97,6 @@ namespace ITeasy_UniversityManagementDemo.Test
         [Fact]
         public void CreateStudent_ConstructInternalStudent_InitialTuitionFeeMustBe2500_PrecisionExample()
         {
-            // Arrange
-            var _studentFactory = new StudentFactory();
 
             // Act
             var student = (InCampusStudent)_studentFactory
@@ -110,11 +112,10 @@ namespace ITeasy_UniversityManagementDemo.Test
         [Fact]
         public void CreateStudent_IsExternalIsTrue_ReturnTypeMustBeExternalStudent()
         {
-            // Arrange 
-            var factory = new StudentFactory();
+            
 
             // Act
-            var student = factory
+            var student = _studentFactory
                 .CreateStudent("Eynolah", "Bagherzadeh", "Najaf Abad", true);
 
             // Assert
@@ -123,7 +124,7 @@ namespace ITeasy_UniversityManagementDemo.Test
 
         }
 
-
+       
     }
 
 

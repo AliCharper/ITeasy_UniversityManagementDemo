@@ -90,7 +90,7 @@ namespace ITeasy_UniversityManagementDemo.Test
         }
 
 
-        [Fact]
+        [Fact(Skip = "Skipping this one for some reasons.")]
         [Trait("Category", "StudentFactory_CreateStudent_InitialTuitionFee")]
         public void CreateStudent_ConstructInternalStudent_InitialTuitionFeeMustBe2500_PrecisionExample()
         {

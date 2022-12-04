@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xunit.Abstractions;
 
 namespace ITeasy_UniversityManagementDemo.Test
 {
@@ -18,10 +19,14 @@ namespace ITeasy_UniversityManagementDemo.Test
     {
 
         private readonly StudentServiceFixture _studentServiceFixture;
+        private readonly ITestOutputHelper _testOutputHelper;
 
-        public StudentServiceTests(StudentServiceFixture studentServiceFixture)
+        public StudentServiceTests(StudentServiceFixture studentServiceFixture,
+                                   ITestOutputHelper testOutputHelper)
+
         {
             _studentServiceFixture = studentServiceFixture;
+            _testOutputHelper = testOutputHelper;
         }
 
 
@@ -93,6 +98,10 @@ namespace ITeasy_UniversityManagementDemo.Test
             // Act
             var inCampusStudent = studentService
                 .CreateInCampusStudent("Pejman", "Vaziri");
+
+            inCampusStudent.AttendedLessons
+               .ForEach(c => _testOutputHelper.WriteLine($"Attended Lessons: {c.Id} {c.Title}"));
+
 
             // Assert
             Assert.Contains(inCampusStudent.AttendedLessons, 
@@ -170,6 +179,7 @@ namespace ITeasy_UniversityManagementDemo.Test
             var inCampusStudent = await studentService
                 .CreateInCampusStudentAsync("Pejman", "Vaziri");
 
+            
             // Assert
             Assert.Equal(obligatoryLessons, inCampusStudent.AttendedLessons);
         }
@@ -188,6 +198,7 @@ namespace ITeasy_UniversityManagementDemo.Test
             var inCampusStudent = new InCampusStudent(
                 "Hasan", "Ahmadi", 5, 3000, false, 3);
 
+            
             // Act & Assert
             await Assert.ThrowsAsync<StudentInvalidlevelRaiseException>(
                 async () =>
@@ -226,9 +237,15 @@ namespace ITeasy_UniversityManagementDemo.Test
                 new UniversityManagementTestDataRepository(),
                 new StudentFactory());
 
+            
+
             var inCampusStudent = new InCampusStudent(
                   "Hasan", "Ahmadi", 5, 3000, false, 3);
 
+            _testOutputHelper.WriteLine("This is a simple comment from my CalculateStudyYears test...");
+
+
+            
             // Act & Assert
             Assert.Raises<StudentIsGraduatedEventArgs>(
                handler => studentService.StudentIsGraduated += handler,

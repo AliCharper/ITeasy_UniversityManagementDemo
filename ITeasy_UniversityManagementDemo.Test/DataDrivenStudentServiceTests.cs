@@ -90,7 +90,8 @@ namespace ITeasy_UniversityManagementDemo.Test
         //[InlineData(50000, false)]
         //[MemberData(nameof(StronglyTypedExampleTestDataForGiveMinimumScholarship_WithProperty))]
         //[MemberData(nameof(StronglyTypedExampleTestDataForGiveMinimumScholarship_WithMethod),1)]
-        [ClassData(typeof(StudentServiceTestData))]
+        //[ClassData(typeof(StudentServiceTestData))]
+        [ClassData(typeof(StronglyTypedStudentServiceTestData))]        
         public async Task GiveMinimumScholarship_ScholarshipGiven_InCampusStudentMinimumScholarshipGivenMustMatchTheValues(
           int ScholarshipGiven, bool expectedValueForMinimumScholarshipGiven)
         {

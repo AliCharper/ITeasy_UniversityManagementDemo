@@ -41,8 +41,11 @@ namespace ITeasy_UniversityManagementDemo.Test
             Assert.Contains(obligatoryLesson, inCampusStudent.AttendedLessons);
         }
 
-        [Fact]
-        public void CreateInCampusStudent_InCampusStudentCreated_MustHaveAttendedFirstObligatoryLesson_WithPredicate()
+        [Theory]
+        [InlineData("37e03ca7-c730-4351-834c-b66f280cdb01")]
+        [InlineData("1fd115cf-f44c-4982-86bc-a8fe2e4ff83e")]
+        [InlineData("1fd115cf-f44c-4982-86bc-a8fe2e4ff83y")]
+        public void CreateInCampusStudent_InCampusStudentCreated_MustHaveAttendedFirstObligatoryLesson_WithPredicate(Guid lessonId)
         {
             // Arrange           
             var universityManagementRepositoryTestDataRepository =
@@ -57,7 +60,7 @@ namespace ITeasy_UniversityManagementDemo.Test
 
             // Assert
             Assert.Contains(inCampusStudent.AttendedLessons, 
-                lesson => lesson.Id == Guid.Parse("37e03ca7-c730-4351-834c-b66f280cdb01"));
+                lesson => lesson.Id == lessonId);
         }
 
         [Fact]

@@ -84,7 +84,8 @@ namespace ITeasy_UniversityManagementDemo.Test
             // Assert
             Assert.Contains(obligatoryLesson, inCampusStudent.AttendedLessons);
         }
-
+        
+        
         [Fact]
         public void CreateInCampusStudent_InCampusStudentCreated_MustHaveAttendedSecondObligatoryLesson_WithPredicate()
         {

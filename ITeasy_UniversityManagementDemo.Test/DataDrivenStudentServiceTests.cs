@@ -27,6 +27,90 @@ namespace ITeasy_UniversityManagementDemo.Test
 
 
         [Fact]
+        public async Task GiveMinimumScholarship_MinimumScholarshipGiven_InCampusStudentMinimumScholarshipGivenMustBeTrue()
+        {
+            //Arrange
+            var inCampusStudent = new InCampusStudent(
+                "Hasan", "Ahmadi", 5, 3000, false, 3);
+
+            //Act
+            await _studentServiceFixture.
+                StudentService.GiveMinimumScholarShipGivenAsync(inCampusStudent);
+
+            //Assert 
+            Assert.True(inCampusStudent.MinimumScholarShipGiven);
+
+        }
+
+        [Fact]
+        public async Task GiveJustMinimumScholarship_MoreThanMinimumScholarshipGiven_InCampusStudentMinimumScholarshipGivenMustBeFalse()
+        {
+            //Arrange
+            var inCampusStudent = new InCampusStudent(
+                "Hasan", "Ahmadi", 5, 3000, false, 3);
+
+            //Act
+            await _studentServiceFixture.
+                StudentService.GiveMinimumScholarShipGivenAsync(inCampusStudent);
+
+            //Assert 
+            Assert.False(inCampusStudent.MinimumScholarShipGiven);
+
+        }
+
+
+        public static TheoryData<int, bool> StronglyTypedExampleTestDataForGiveMinimumScholarship_WithProperty
+        {
+            get
+            {
+                return new TheoryData<int, bool>()
+                {
+                        { 10000, true },
+                        { 50000, false }
+                };
+            }
+        }
+
+        public static IEnumerable<object[]> StronglyTypedExampleTestDataForGiveMinimumScholarship_WithMethod(
+             int testDataInstancesToProvide)
+        {
+            var testData = new List<object[]>
+                {
+                        new object[] { 100, true },
+                        new object[] { 200, false }
+                };
+
+            return testData.Take(testDataInstancesToProvide);
+        }
+
+
+        [Theory]
+        //[InlineData(10000, true)]
+        //[InlineData(50000, false)]
+        //[MemberData(nameof(StronglyTypedExampleTestDataForGiveMinimumScholarship_WithProperty))]
+        [MemberData(nameof(StronglyTypedExampleTestDataForGiveMinimumScholarship_WithMethod),1)]
+        public async Task GiveMinimumScholarship_ScholarshipGiven_InCampusStudentMinimumScholarshipGivenMustMatchTheValues(
+          int ScholarshipGiven, bool expectedValueForMinimumScholarshipGiven)
+        {
+            //Arrange
+            var inCampusStudent = new InCampusStudent(
+                "Hasan", "Ahmadi", 5, ScholarshipGiven, false, 3);
+
+            //Act
+            await _studentServiceFixture.
+                StudentService.GiveMinimumScholarShipGivenAsync(inCampusStudent);
+
+            //Assert 
+            Assert.Equal(expectedValueForMinimumScholarshipGiven, inCampusStudent.MinimumScholarShipGiven);
+
+        }
+
+
+
+
+
+
+        [Fact]
         public void CreateInCampusStudent_InCampusStudentCreated_MustHaveAttendedFirstObligatoryLesson()
         {
            
@@ -44,7 +128,6 @@ namespace ITeasy_UniversityManagementDemo.Test
         [Theory]
         [InlineData("37e03ca7-c730-4351-834c-b66f280cdb01")]
         [InlineData("1fd115cf-f44c-4982-86bc-a8fe2e4ff83e")]
-        [InlineData("1fd115cf-f44c-4982-86bc-a8fe2e4ff83y")]
         public void CreateInCampusStudent_InCampusStudentCreated_MustHaveAttendedFirstObligatoryLesson_WithPredicate(Guid lessonId)
         {
             // Arrange           

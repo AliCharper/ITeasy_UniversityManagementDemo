@@ -5,6 +5,7 @@ using Domain.Entities;
 using Infra.Exceptions;
 using ITeasy_UniversityManagementDemo.Test.Fixtures;
 using ITeasy_UniversityManagementDemo.Test.Services;
+using ITeasy_UniversityManagementDemo.Test.TestData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -88,7 +89,8 @@ namespace ITeasy_UniversityManagementDemo.Test
         //[InlineData(10000, true)]
         //[InlineData(50000, false)]
         //[MemberData(nameof(StronglyTypedExampleTestDataForGiveMinimumScholarship_WithProperty))]
-        [MemberData(nameof(StronglyTypedExampleTestDataForGiveMinimumScholarship_WithMethod),1)]
+        //[MemberData(nameof(StronglyTypedExampleTestDataForGiveMinimumScholarship_WithMethod),1)]
+        [ClassData(typeof(StudentServiceTestData))]
         public async Task GiveMinimumScholarship_ScholarshipGiven_InCampusStudentMinimumScholarshipGivenMustMatchTheValues(
           int ScholarshipGiven, bool expectedValueForMinimumScholarshipGiven)
         {

@@ -22,6 +22,7 @@ namespace Domain.DbContexts
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options)
         : base(options)
         {
+            Database.EnsureCreated();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

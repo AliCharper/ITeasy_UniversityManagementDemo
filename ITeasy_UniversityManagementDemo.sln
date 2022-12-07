@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoC", "IoC\IoC.csproj", "{8
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITeasy_UniversityManagementDemo.Test", "ITeasy_UniversityManagementDemo.Test\ITeasy_UniversityManagementDemo.Test.csproj", "{4BD958FC-7971-4EA5-BFF4-7DE5AA0C76C2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EducationMinistry_TopLevelManagement", "EducationMinistry_TopLevelManagement\EducationMinistry_TopLevelManagement.csproj", "{2F12BC25-CBE5-4738-AE14-4785940E2E4D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{4BD958FC-7971-4EA5-BFF4-7DE5AA0C76C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BD958FC-7971-4EA5-BFF4-7DE5AA0C76C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BD958FC-7971-4EA5-BFF4-7DE5AA0C76C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F12BC25-CBE5-4738-AE14-4785940E2E4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F12BC25-CBE5-4738-AE14-4785940E2E4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F12BC25-CBE5-4738-AE14-4785940E2E4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F12BC25-CBE5-4738-AE14-4785940E2E4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

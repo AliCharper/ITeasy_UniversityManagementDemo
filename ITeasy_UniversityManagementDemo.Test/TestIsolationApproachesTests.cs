@@ -2,6 +2,9 @@
 using DataAccess.Factory;
 using DataAccess.Repository;
 using Domain.DbContexts;
+using Domain.Entities;
+using ITeasy_UniversityManagementDemo.Test.HttpMessageHandlers;
+using ITeasy_UniversityManagementDemo.Test.Services;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -15,6 +18,25 @@ namespace ITeasy_UniversityManagementDemo.Test
 {
     public class TestIsolationApproachesTests
     {
+
+        [Fact]
+        public async Task PromoteInCampusStudentAsync_IsEligible_LevelMustBeIncreased()
+        {
+            // Arrange
+            var httpClient = new HttpClient(
+                new TestablePromotionEligibilityHandler(true));
+            var inCampusStudent = new InCampusStudent(
+                "Ali", "Kolahdoozan", 5, 3000, false, 1);
+            var promotionService = new PromotionService(httpClient,
+                new UniversityManagementTestDataRepository());
+
+            // Act
+            await promotionService.PromoteInCampusStudentAsync(inCampusStudent);
+
+            // Assert
+            Assert.Equal(5, inCampusStudent.Level);
+        }
+
 
         [Fact]
         public async Task AttendLessonAsync_LessonAttended_SuggestedUnitsMustCorrectlyBeRecalculated()
@@ -50,7 +72,7 @@ namespace ITeasy_UniversityManagementDemo.Test
             }
 
             // expected suggested units after attending the lesson
-            var expectedSuggestedBonus = inCampusStudent.SuggestedUnits + 11;
+            var expectedSuggestedBonus = inCampusStudent.SuggestedUnits + 10;
 
             // Act
             await studentService.AttendLessonAsync(inCampusStudent, lessonToAttend);

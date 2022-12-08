@@ -116,26 +116,15 @@ namespace ITeasy_UniversityManagementDemo.Test.Services
             return Task.FromResult(GetLessons(lessonIds));
         }
 
-
-        public InCampusStudent? GetInternalEmployee(Guid employeeId)
+        public InCampusStudent? GetInCampusStudent(Guid studentId)
         {
-            return _inCampusStudents.FirstOrDefault(e => e.Id == employeeId);
+            return _inCampusStudents.FirstOrDefault(e => e.Id == studentId);
         }
 
-        public Task<InCampusStudent?> GetInternalEmployeeAsync(Guid employeeId)
-        {
-            return Task.FromResult(GetInternalEmployee(employeeId));
-        }
+        
 
-        public Task<IEnumerable<InCampusStudent>> GetInternalEmployeesAsync()
-        {
-            return Task.FromResult(_inCampusStudents.AsEnumerable());
-        }
 
-        public InCampusStudent? GetInCampusStudent(Guid StudentId)
-        {
-            throw new NotImplementedException();
-        }
+
 
         public Task<IEnumerable<InCampusStudent>> GetInCampusStudentAsync()
         {

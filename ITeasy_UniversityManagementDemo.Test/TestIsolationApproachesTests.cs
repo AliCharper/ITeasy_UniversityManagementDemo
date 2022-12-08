@@ -34,7 +34,7 @@ namespace ITeasy_UniversityManagementDemo.Test
             await promotionService.PromoteInCampusStudentAsync(inCampusStudent);
 
             // Assert
-            Assert.Equal(5, inCampusStudent.Level);
+            Assert.Equal(2, inCampusStudent.Level);
         }
 
 
